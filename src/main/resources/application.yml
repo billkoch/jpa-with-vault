@@ -1,0 +1,12 @@
+logging.level.org.flywaydb: trace
+spring:
+  datasource:
+    driver-class-name: org.testcontainers.jdbc.ContainerDatabaseDriver
+    url: jdbc:postgresql://postgres:5432/test
+  jpa.hibernate.ddl-auto: validate
+
+---
+spring:
+  profiles: integration-test
+  datasource:
+    url: jdbc:tc:postgresql:9.6.2-alpine://localhost/test

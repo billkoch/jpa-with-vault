@@ -1,0 +1,15 @@
+version: '3'
+services:
+  vault:
+    image: vault:0.6.5
+    environment:
+      VAULT_DEV_ROOT_TOKEN_ID: 'root-vault-token'
+    cap_add:
+      - IPC_LOCK
+    links:
+      - postgresql
+  postgresql:
+    image: postgres:9.6.2-alpine
+    environment:
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: 'postgresql-root-password'
