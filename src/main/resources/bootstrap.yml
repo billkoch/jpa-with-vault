@@ -1,0 +1,17 @@
+logging.level:
+  org.flywaydb: trace
+  org.springframework.cloud.vault: trace
+
+spring.cloud.vault:
+  fail-fast: true
+  host: localhost
+  port: 8200
+  scheme: http
+  token: root-vault-token
+  config.order: -10
+  postgresql:
+    enabled: true
+    role: all
+    backend: postgresql
+    username-property: spring.datasource.username
+    password-property: spring.datasource.password

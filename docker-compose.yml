@@ -8,8 +8,14 @@ services:
       - IPC_LOCK
     links:
       - postgresql
+    volumes:
+      - ./vault:/tmp
+    ports:
+      - "8200:8200"
   postgresql:
     image: postgres:9.6.2-alpine
     environment:
       POSTGRES_USER: root
       POSTGRES_PASSWORD: 'postgresql-root-password'
+    ports:
+      - "5432:5432"

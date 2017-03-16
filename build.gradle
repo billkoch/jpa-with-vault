@@ -1,6 +1,6 @@
 buildscript {
   ext {
-    springBootVersion = '1.4.3.RELEASE'
+    springBootVersion = '1.5.2.RELEASE'
   }
   repositories {
     mavenCentral()
@@ -27,6 +27,9 @@ sourceCompatibility = 1.8
 
 repositories {
   mavenCentral()
+  maven {
+    url('https://repo.spring.io/milestone')
+  }
 }
 
 dependencies {
@@ -34,6 +37,7 @@ dependencies {
   compile('org.springframework.boot:spring-boot-starter-data-jpa')
   compile('org.springframework.boot:spring-boot-starter-web')
   compileOnly('org.projectlombok:lombok:1.16.14')
+  runtime('org.springframework.cloud:spring-cloud-vault-starter-config:1.0.0.M2')
   runtime('org.springframework.boot:spring-boot-devtools')
   runtime('org.flywaydb:flyway-core')
   runtime('org.postgresql:postgresql:9.4-1206-jdbc42')
