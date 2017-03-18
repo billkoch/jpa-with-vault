@@ -17,5 +17,6 @@ services:
     environment:
       POSTGRES_USER: root
       POSTGRES_PASSWORD: 'postgresql-root-password'
+      POSTGRES_DB: test
     ports:
       - "5432:5432"

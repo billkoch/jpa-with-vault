@@ -1,7 +1,3 @@
-logging.level:
-  org.flywaydb: trace
-  org.springframework.cloud.vault: trace
-
 spring.cloud.vault:
   fail-fast: true
   host: localhost

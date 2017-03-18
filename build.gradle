@@ -25,6 +25,10 @@ jar {
 
 sourceCompatibility = 1.8
 
+ext {
+    vaultConfigVersion = '1.0.0.M2'
+}
+
 repositories {
   mavenCentral()
   maven {
@@ -35,9 +39,10 @@ repositories {
 dependencies {
   compile('org.springframework.boot:spring-boot-starter-actuator')
   compile('org.springframework.boot:spring-boot-starter-data-jpa')
-  compile('org.springframework.boot:spring-boot-starter-web')
+  compile('org.apache.commons:commons-lang3:3.5')
   compileOnly('org.projectlombok:lombok:1.16.14')
-  runtime('org.springframework.cloud:spring-cloud-vault-starter-config:1.0.0.M2')
+  runtime("org.springframework.cloud:spring-cloud-vault-starter-config:${vaultConfigVersion}")
+  runtime("org.springframework.cloud:spring-cloud-vault-config-databases:${vaultConfigVersion}")
   runtime('org.springframework.boot:spring-boot-devtools')
   runtime('org.flywaydb:flyway-core')
   runtime('org.postgresql:postgresql:9.4-1206-jdbc42')

@@ -1,6 +1,7 @@
 logging.level:
-  org.flywaydb: trace
-  org.springframework.cloud.vault: trace
+  io.billkoch: trace
+  org.flywaydb: info
+  org.springframework: info
 
 spring:
   datasource:
