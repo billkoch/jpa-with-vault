@@ -5,9 +5,9 @@ spring.cloud.vault:
   scheme: http
   token: root-vault-token
   config.order: -10
-  postgresql:
+  mysql:
     enabled: true
     role: all
-    backend: postgresql
+    backend: mysql
     username-property: spring.datasource.username
     password-property: spring.datasource.password

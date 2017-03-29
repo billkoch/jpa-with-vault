@@ -7,16 +7,15 @@ services:
     cap_add:
       - IPC_LOCK
     links:
-      - postgresql
+      - mysql
     volumes:
       - ./vault:/tmp
     ports:
       - "8200:8200"
-  postgresql:
-    image: postgres:9.6.2-alpine
+  mysql:
+    image: mysql:5.7.17
     environment:
-      POSTGRES_USER: root
-      POSTGRES_PASSWORD: 'postgresql-root-password'
-      POSTGRES_DB: test
+      MYSQL_ROOT_PASSWORD: 'root'
+      MYSQL_DATABASE: test
     ports:
-      - "5432:5432"
+      - "3306:3306"

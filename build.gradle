@@ -45,9 +45,9 @@ dependencies {
   runtime("org.springframework.cloud:spring-cloud-vault-config-databases:${vaultConfigVersion}")
   runtime('org.springframework.boot:spring-boot-devtools')
   runtime('org.flywaydb:flyway-core')
-  runtime('org.postgresql:postgresql:9.4-1206-jdbc42')
+  runtime('mysql:mysql-connector-java:5.1.41')
   testCompile('org.springframework.boot:spring-boot-starter-test')
-  testCompile('org.testcontainers:postgresql:1.1.9')
+  testCompile('org.testcontainers:mysql:1.2.0')
 }
 
 spotless {

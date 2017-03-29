@@ -20,7 +20,6 @@ import io.billkoch.examples.repositories.PersonRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.apache.commons.lang3.RandomUtils;
-import org.apache.commons.lang3.math.NumberUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -30,8 +29,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class Application implements CommandLineRunner {
 
-  @Autowired
-  private PersonRepository personRepository;
+  @Autowired private PersonRepository personRepository;
 
   public static void main(String[] args) {
     SpringApplication.run(Application.class, args);
@@ -39,9 +37,10 @@ public class Application implements CommandLineRunner {
 
   @Override
   public void run(String... args) throws Exception {
-    while(true) {
+    while (true) {
       log.debug("Persisting a new person");
-      personRepository.save(new Person(RandomStringUtils.randomAlphabetic(5), RandomStringUtils.randomAlphabetic(8)));
+      personRepository.save(
+          new Person(RandomStringUtils.randomAlphabetic(5), RandomStringUtils.randomAlphabetic(8)));
       log.debug("Now there are {} persisted people", personRepository.count());
       long sleepTime = RandomUtils.nextLong(1000L, 6000L);
       log.debug("Sleeping for {} milliseconds", sleepTime);

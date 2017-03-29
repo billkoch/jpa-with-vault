@@ -17,6 +17,7 @@ package io.billkoch.examples.domain;
 
 import javax.persistence.*;
 import lombok.*;
+import org.hibernate.annotations.GenericGenerator;
 
 @Entity
 @Table(name = "people")
@@ -24,8 +25,8 @@ import lombok.*;
 @Setter(AccessLevel.PROTECTED)
 public class Person {
   @Id
-  @GeneratedValue(generator = "sequence", strategy = GenerationType.SEQUENCE)
-  @SequenceGenerator(name = "sequence", sequenceName = "people_id_seq", allocationSize = 10)
+  @GeneratedValue(generator = "native", strategy = GenerationType.AUTO)
+  @GenericGenerator(name = "native", strategy = "native")
   private Long id;
 
   private final String lastName;

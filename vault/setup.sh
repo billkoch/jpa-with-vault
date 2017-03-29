@@ -1,19 +1,18 @@
 export VAULT_TOKEN='root-vault-token' && \
   export VAULT_ADDR='http://0.0.0.0:8200'
 
-vault mount postgresql
+vault mount mysql
 
-# Give Vault the PostgreSQL connection information
-vault write postgresql/config/connection \
-  connection_url="postgresql://root:postgresql-root-password@postgresql:5432/postgres?sslmode=disable"
+# Give Vault the MySQL connection information
+vault write mysql/config/connection \
+  connection_url="root:root@tcp(mysql:3306)/"
 
 # Establish the lease timeframe
-vault write postgresql/config/lease \
-  lease=1m \
-  lease_max=5m
+vault write mysql/config/lease \
+  lease=30s \
+  lease_max=1m
 
 # Configure the SQL commands to provision a new account and revoke an account
-vault write postgresql/roles/all \
-  sql="CREATE ROLE \"{{name}}\" WITH LOGIN PASSWORD '{{password}}' VALID UNTIL '{{expiration}}'; \
-    GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA public TO \"{{name}}\";" \
-  revocation_sql="SET ROLE authserver; DROP ROLE "{{name}}";"
+vault write mysql/roles/all \
+  sql="CREATE USER '{{name}}'@'%' IDENTIFIED BY '{{password}}';GRANT ALL PRIVILEGES ON *.* TO '{{name}}'@'%';" \
+  revocation_sql="DROP USER '{{name}}'@'%';"
